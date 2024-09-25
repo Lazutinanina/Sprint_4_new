@@ -104,6 +104,8 @@ public class OrderTest extends SettingForTests{
 
         @Test
         public void sendOrderChromeUpbutton() throws InterruptedException {  //TODO Найден баг при отправке формы в Хроме
+            driver = new ChromeDriver();
+            driver.get("https://qa-scooter.praktikum-services.ru");
             OrderPageScooter orderPage = new OrderPageScooter(driver);
             orderPage.clickOrderButtonUp();
             orderPage.firstPageForm(name, surname, address, subway, phoneNumber);
@@ -113,7 +115,9 @@ public class OrderTest extends SettingForTests{
 
         @Test
         public void sendOrderChromeDownbutton() throws InterruptedException { //TODO Найден баг при отправке формы в Хроме по середине
-            OrderPageScooter orderPage = new OrderPageScooter(driver);
+            driver = new ChromeDriver();
+            driver.get("https://qa-scooter.praktikum-services.ru");
+             OrderPageScooter orderPage = new OrderPageScooter(driver);
             orderPage.clickOrderButtonDown();
             orderPage.firstPageForm(name, surname, address, subway, phoneNumber);
             orderPage.secondPageForm(date, rentalPeriod);
