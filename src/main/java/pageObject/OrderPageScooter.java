@@ -1,6 +1,8 @@
 package pageObject;
+import java.time.Duration;
+import java.util.List;
 
-
+import static org.hamcrest.CoreMatchers.is;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -8,11 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.is;
 
 
 public class OrderPageScooter {
@@ -52,9 +49,6 @@ public class OrderPageScooter {
     /** кнопка Заказать по середине страницы*/
     private By pageOrderButton = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
     private By successfulModal = By.xpath(".//div[@class='Order_Modal__YZ-d3']/div[@class='Order_ModalHeader__3FDaJ' and text()='Заказ оформлен']");
-    private By rentalPeriod = By.className("Dropdown-placeholder");
-    private By rentalPeriodList = By.className("Dropdown-option");
-    private By sendButton = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
     public static final String order = "Для кого самокат";
     public static final String confirm = "Посмотреть статус";
 
@@ -122,9 +116,6 @@ public class OrderPageScooter {
         driver.findElement(orderConfirmButton).click();
     }
 
-    public void clickOrderButtonUp() {
-        driver.findElement(headerOrderButton).click();
-    }
     public void clickOrderButtonDown() throws InterruptedException {
         WebElement element = driver.findElement(pageOrderButton);
         scrollToElement(element);
@@ -165,23 +156,5 @@ public class OrderPageScooter {
     }
     public void clickHeaderOrderButton() {
         driver.findElement(headerOrderButton).click();
-    }
-
-
-    public void firstPageForm(String firstNameToForm, String lastNameToForm, String addressToForm, String subwayStation, String phoneToForm) throws InterruptedException {
-        setName(firstNameToForm);
-        setSurname(lastNameToForm);
-        setAddress(addressToForm);
-        setSubway(subwayStation);
-        setPhoneNumber(phoneToForm);
-        clickOrderNextButton();
-    }
-
-
-    public void secondPageForm(String dateToForm, String rentalPeriodToForm) throws InterruptedException {
-        setDate(dateToForm);
-        clickOrderCreateButton();
-        setRentalPeriod(rentalPeriodToForm);
-        clickOrderCreateButton();
     }
 }
